@@ -1,0 +1,680 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 11,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "panels": [],
+      "title": "Factory Status",
+      "type": "row"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 16,
+      "interval": null,
+      "maxDataPoints": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^description$/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/factories.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"description\": \"$physical_resource.abstract_resource.name\" , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Factory Name",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 14,
+      "interval": null,
+      "maxDataPoints": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^description$/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/factories.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"description\": \"$physical_resource.abstract_resource.description\" , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Factory Basic Description",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 12,
+      "interval": null,
+      "maxDataPoints": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^capabilities$/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/factories.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"capabilities\":  {\"$concatArrays\" : \"$physical_resource.abstract_resource.offered_capabilities\"} , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Factory Capabilities",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 10,
+      "interval": null,
+      "maxDataPoints": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^state$/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/factories.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"state\" : \"$factory_state.factory_state_string\" , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Factory State",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 2,
+      "panels": [],
+      "title": "Resources",
+      "type": "row"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 19
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^name$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/resources.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"ur5\", \"physical_resource.abstract_resource.factory\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"name\": \"$physical_resource.abstract_resource.name\" , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Resource Name",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 19
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^type$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/resources.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"ur5\", \"physical_resource.abstract_resource.factory\" : \"IGMR\"  }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"type\": \"$type.abstract_type.name\" , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Resource Type",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 19
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^state$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/resources.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"ur5\", \"physical_resource.abstract_resource.factory\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"state\": \"$robot_state.robot_state_string\" , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Resource State",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 19
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^description$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/resources.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"ur5\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"description\": \"$physical_resource.abstract_resource.description\" , \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Resource Description",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "m "
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 31,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/resources.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"ur5\", \"physical_resource.abstract_resource.factory\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"X: \": \"$current_pose.position.x\" , \"Y: \": \"$current_pose.position.y\" , \"Z: \": \"$current_pose.position.z\", \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "ur5 Position",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 32,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/resources.aggregate([\n{ \"$match\": { \"physical_resource.abstract_resource.name\" : \"ur5\", \"physical_resource.abstract_resource.factory\" : \"IGMR\" }},\n{ \"$sort\": {\"_id\":-1}},\n{ \"$project\": { \"x: \": \"$current_pose.orientation.x\" , \"y: \": \"$current_pose.orientation.y\" , \"z: \": \"$current_pose.orientation.z\", \"w: \": \"$current_pose.orientation.z\", \"_id\" : 0}},\n{ \"$limit\": 1 }\n])",
+          "type": "table"
+        }
+      ],
+      "title": "ur5 Orientation",
+      "type": "stat"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "IGMR Factory",
+  "uid": "b85ZbNG7z",
+  "version": 44
+}

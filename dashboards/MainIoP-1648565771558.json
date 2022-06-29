@@ -1,0 +1,352 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 5,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "links": [],
+      "options": {
+        "folderId": null,
+        "maxItems": 10,
+        "query": "Factory",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": []
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "title": "IoP Factories",
+      "type": "dashlist"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 15,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "content": "<img src=https://www.wzl.rwth-aachen.de/global/show_picture.asp?id=aaaaaaaaabdtrye />\n           ",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 0,
+        "y": 6
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/factories.aggregate([\n{\"$match\": {}},\n{ \"$group\": { \"_id\": \"$physical_resource.abstract_resource.name\" } },\n{\"$count\": \"number_of_stations\"}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Number of Factories",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 4,
+        "y": 6
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/resources.aggregate([\n{\"$match\": {}},\n{ \"$group\": { \"_id\": \"$physical_resource.abstract_resource.name\" } },\n{\"$count\": \"number_of_resources\"}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Number of Resources",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 8,
+        "y": 6
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/stations.aggregate([\n{\"$match\": {}},\n{ \"$group\": { \"_id\": \"$physical_resource.abstract_resource.name\" } },\n{\"$count\": \"number_of_stations\"}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Number of Stations",
+      "type": "stat"
+    },
+    {
+      "datasource": "MOngoDB-IoP",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "localTime"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 227
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 12,
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.b24/factories.aggregate([\n{\n  \"$collStats\":\n    {\n      \"latencyStats\": { \"histograms\": true },\n      \"storageStats\": { \"scale\": 1024 },\n      \"count\": {},\n      \"queryExecStats\": {}\n    }\n}\n])",
+          "type": "table"
+        },
+        {
+          "hide": false,
+          "rawQuery": true,
+          "refId": "B",
+          "target": "db.b24/resources.aggregate([\n{\n  \"$collStats\":\n    {\n      \"latencyStats\": { \"histograms\": true },\n      \"storageStats\": { \"scale\": 1024 },\n      \"count\": {},\n      \"queryExecStats\": {}\n    }\n}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "Logs",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "MainIoP",
+  "uid": "DxO8THMnk",
+  "version": 25
+}

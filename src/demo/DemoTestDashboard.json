@@ -1,0 +1,245 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "MongoDB",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.robots.aggregate\n([{\n\"$match\": {}}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "IoP Robots",
+      "type": "table"
+    },
+    {
+      "datasource": "MongoDB",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.capabilities.aggregate\n([{\n\"$match\": {}}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "IoP Capabilities",
+      "type": "table"
+    },
+    {
+      "datasource": "MongoDB",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.stations.aggregate\n([{\n\"$match\": {}}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "IoP Stations",
+      "type": "table"
+    },
+    {
+      "datasource": "MongoDB",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 2,
+      "interval": null,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "hide": false,
+          "rawQuery": true,
+          "refId": "A",
+          "target": "db.work_plans.aggregate\n([{\n\"$match\": {}}\n])",
+          "type": "table"
+        }
+      ],
+      "title": "IoP WorkPlans",
+      "type": "table"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "TestDashboard",
+  "uid": "5ThbilRnk",
+  "version": 4
+}
